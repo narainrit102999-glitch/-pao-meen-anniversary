@@ -1,0 +1,800 @@
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Meen ♡</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Itim&family=Kanit:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --pink: #e8b9c5;
+  --pink-light: #fff1f4;
+  --cream: #fffaf7;
+  --brown: #70575b;
+  --green: #879b83;
+  --white: #fff;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: 'Kanit', sans-serif;
+  font-weight: 300;
+  color: var(--brown);
+  background: var(--cream);
+  overflow-x: hidden;
+}
+button, input { font: inherit; }
+button { cursor: pointer; }
+h1, h2, h3, .hand {
+  font-family: 'Itim', cursive;
+  font-weight: 400;
+}
+a { color: inherit; text-decoration: none; }
+section { padding: 76px 20px; scroll-margin-top: 65px; }
+.wrap { width: min(900px, 100%); margin: auto; }
+.center { text-align: center; }
+.eyebrow {
+  color: #bd8795;
+  letter-spacing: 3px;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+h2 { font-size: clamp(32px, 7vw, 45px); margin: 10px 0; }
+.subtitle { color: #a18a8c; font-size: 14px; line-height: 1.9; }
+.btn {
+  border: 0;
+  border-radius: 30px;
+  padding: 12px 23px;
+  background: var(--brown);
+  color: white;
+  transition: .25s;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn-light {
+  background: white;
+  color: var(--brown);
+  border: 1px solid #f0dce1;
+}
+.heart { color: #d98ca2; }
+
+/* หน้ากล่องของขวัญ */
+#intro {
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 25px;
+  background:
+    radial-gradient(ellipse at 10% 10%, #f8dfe5 0, transparent 35%),
+    radial-gradient(ellipse at 90% 90%, #e9eddf 0, transparent 35%),
+    var(--cream);
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  transition: opacity .7s, visibility .7s;
+}
+#intro.hide { opacity: 0; visibility: hidden; pointer-events: none; }
+.intro-content { max-width: 440px; }
+.intro-flower { font-size: 45px; margin-bottom: 12px; }
+.gift {
+  width: 130px;
+  height: 110px;
+  position: relative;
+  margin: 35px auto 25px;
+  border: 0;
+  background: transparent;
+  display: block;
+  animation: float 2s infinite ease-in-out;
+}
+.gift-box {
+  position: absolute;
+  bottom: 0;
+  left: 5px;
+  width: 120px;
+  height: 78px;
+  background: #e9b5c2;
+  border-radius: 5px;
+  box-shadow: 0 12px 22px #d4a1ad55;
+}
+.gift-box:before {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 100%;
+  left: 51px;
+  background: #fff2f4;
+}
+.gift-lid {
+  position: absolute;
+  left: 0;
+  top: 19px;
+  width: 130px;
+  height: 23px;
+  background: #d99eaf;
+  border-radius: 5px;
+  z-index: 2;
+  transition: transform .6s;
+}
+.gift-lid:before {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 100%;
+  left: 56px;
+  background: #fff2f4;
+}
+.gift.open .gift-lid { transform: translateY(-40px) rotate(-12deg); }
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-9px); }
+}
+#intro h1 { font-size: 39px; margin: 8px 0; }
+#intro p { line-height: 1.9; color: #967e82; }
+
+/* แถบเมนู */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: #fffaf7ed;
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid #f3e5e7;
+}
+.nav-inner {
+  max-width: 1000px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 20px;
+}
+.brand { font-family: 'Itim'; font-size: 23px; white-space: nowrap; }
+.nav-links { display: flex; gap: 18px; font-size: 12px; color: #8c7479; }
+.nav-links a:hover { color: #cf879b; }
+.menu-btn { display: none; border: 0; background: none; font-size: 22px; color: var(--brown); }
+
+/* หน้าแรก */
+.hero {
+  min-height: 75vh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 75px 20px;
+  background:
+    radial-gradient(ellipse at 0% 0%, #f8e2e8, transparent 45%),
+    radial-gradient(ellipse at 100% 100%, #e7eadf, transparent 45%);
+}
+.hero .tiny { font-size: 13px; letter-spacing: 3px; color: #a78a91; }
+.hero h1 { font-size: clamp(48px, 11vw, 82px); line-height: 1.1; margin: 22px 0 10px; }
+.hero h1 span { color: #d594a7; }
+.hero .desc { max-width: 450px; margin: 0 auto 25px; line-height: 2; font-size: 14px; }
+.hero-flower { font-size: 28px; margin-bottom: 15px; }
+
+/* ตัวนับวัน */
+.counter-card {
+  max-width: 600px;
+  margin: 35px auto 0;
+  padding: 25px 18px;
+  background: #ffffffb8;
+  border: 1px solid #f0dfe3;
+  border-radius: 22px;
+  box-shadow: 0 12px 35px #a87d8a0b;
+}
+.counter-number { font-family: 'Itim'; font-size: clamp(44px, 12vw, 70px); color: #d38da1; line-height: 1.2; }
+.counter-label { font-size: 13px; color: #9e8389; }
+.counter-grid { display: flex; justify-content: center; gap: 30px; margin-top: 17px; }
+.counter-grid strong { display: block; font-size: 22px; font-weight: 400; }
+.counter-grid small { color: #a18a8c; font-size: 11px; }
+
+/* เส้นเวลา */
+.timeline { max-width: 650px; margin: 42px auto 0; position: relative; }
+.timeline:before {
+  content: '';
+  position: absolute;
+  left: 20px;
+  top: 12px;
+  bottom: 12px;
+  width: 1px;
+  background: #e9c7d0;
+}
+.event { position: relative; padding: 0 0 32px 55px; }
+.event:before {
+  content: '♡';
+  position: absolute;
+  left: 10px;
+  top: 0;
+  background: var(--cream);
+  color: #d58ea2;
+  font-size: 20px;
+}
+.event-card {
+  background: white;
+  border: 1px solid #f2e6e7;
+  padding: 22px;
+  border-radius: 16px;
+}
+.event-date { color: #c38b9b; font-size: 12px; letter-spacing: 1px; }
+.event h3 { font-size: 25px; margin: 7px 0; }
+.event p { font-size: 13px; line-height: 2; margin-bottom: 0; color: #907b7f; }
+
+/* อัลบั้ม */
+#memories { background: #fff5f6; }
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 35px 0;
+}
+.photo {
+  background: white;
+  padding: 8px 8px 15px;
+  border-radius: 7px;
+  box-shadow: 0 7px 22px #9d758012;
+  transform: rotate(var(--tilt, 0deg));
+  transition: .25s;
+  min-width: 0;
+}
+.photo:hover { transform: rotate(0) translateY(-5px); }
+.photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 4px;
+  background: #f6e5e9;
+}
+.photo .placeholder {
+  aspect-ratio: 4 / 5;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(145deg, #f9e9ed, #e8eee3);
+  color: #b58d98;
+  text-align: center;
+  padding: 12px;
+  font-size: 12px;
+}
+.photo p { font-family: 'Itim'; text-align: center; margin: 12px 0 0; font-size: 17px; }
+.upload-area {
+  padding: 20px;
+  border: 1px dashed #d9adb9;
+  border-radius: 16px;
+  background: #fffaf9;
+}
+.upload-area p { font-size: 12px; line-height: 1.9; color: #9b8589; }
+.upload-area input { width: 100%; font-size: 12px; margin-top: 10px; }
+
+/* จดหมาย */
+.letter-wrap {
+  max-width: 680px;
+  margin: 35px auto 0;
+  padding: 12px;
+  background: #f5e8dc;
+  transform: rotate(-.4deg);
+  box-shadow: 0 15px 35px #8b6d5a12;
+}
+.letter {
+  background: #fffdf8;
+  padding: clamp(25px, 6vw, 50px);
+  border: 1px solid #efe1d4;
+  text-align: left;
+  line-height: 2.1;
+  font-size: 14px;
+}
+.letter h3 { text-align: center; font-size: 30px; color: #c48b9a; }
+.letter p { white-space: pre-line; }
+.signature { text-align: right; font-family: 'Itim'; font-size: 22px; color: #c48b9a; }
+
+/* สิ่งเล็กๆ ที่จำได้ */
+#little-things { background: #f7f8f1; }
+.little-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 35px;
+}
+.little-card {
+  background: #fff;
+  border: 1px solid #e9ebdf;
+  border-radius: 16px;
+  padding: 22px 10px;
+  text-align: center;
+}
+.little-card span { font-size: 30px; }
+.little-card p { margin: 10px 0 0; font-family: 'Itim'; font-size: 18px; }
+
+/* อนาคต */
+.future-list { max-width: 540px; margin: 30px auto 0; text-align: left; }
+.future-item {
+  display: flex;
+  gap: 13px;
+  align-items: flex-start;
+  background: white;
+  border: 1px solid #f0e5e5;
+  padding: 17px;
+  border-radius: 13px;
+  margin: 10px 0;
+  font-size: 14px;
+}
+.future-item span { color: #d18ca0; }
+
+/* เพลง */
+.music-card {
+  max-width: 520px;
+  margin: 30px auto 0;
+  background: white;
+  padding: 25px;
+  border-radius: 22px;
+  border: 1px solid #f1e2e5;
+  text-align: center;
+}
+.record {
+  width: 95px; height: 95px; margin: auto auto 15px;
+  border-radius: 50%;
+  display: grid; place-items: center;
+  color: #fff;
+  background: repeating-radial-gradient(circle, #8d737c 0 2px, #6d5862 3px 5px);
+  font-size: 30px;
+}
+.music-card h3 { font-size: 25px; margin: 7px 0; }
+.music-card p { font-size: 12px; line-height: 1.8; color: #a18a8c; }
+
+/* เซอร์ไพรส์ */
+#surprise {
+  min-height: 75vh;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(ellipse at 50% 0%, #f8e0e6, transparent 60%),
+    #fffaf7;
+}
+.surprise-content { max-width: 600px; }
+.flower-field { font-size: clamp(32px, 8vw, 60px); line-height: 1.7; margin: 20px 0; }
+.hidden-message {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 1s, opacity 1s, margin 1s;
+}
+.hidden-message.show { max-height: 500px; opacity: 1; margin-top: 25px; }
+.hidden-message p { line-height: 2; font-size: 15px; }
+footer { padding: 28px 15px; text-align: center; font-size: 11px; color: #b19b9e; }
+.floating-heart {
+  position: fixed;
+  bottom: -30px;
+  pointer-events: none;
+  z-index: 30;
+  animation: rise 5s linear forwards;
+}
+@keyframes rise {
+  to { transform: translateY(-110vh) rotate(30deg); opacity: 0; }
+}
+
+@media (max-width: 650px) {
+  section { padding: 62px 17px; }
+  .nav-inner { padding: 12px 16px; }
+  .menu-btn { display: block; }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 52px; left: 0; right: 0;
+    background: #fffaf7;
+    padding: 18px;
+    flex-direction: column;
+    text-align: center;
+    gap: 17px;
+    border-bottom: 1px solid #f1e1e5;
+  }
+  .nav-links.show { display: flex; }
+  .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .little-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .counter-grid { gap: 20px; }
+  .hero { min-height: 70vh; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- หน้ากล่องของขวัญ -->
+<div id="intro">
+  <div class="intro-content">
+    <div class="intro-flower">🤍 🌷 🤍</div>
+    <div class="eyebrow">A LITTLE GIFT FOR YOU</div>
+    <h1>ถึงมีนคนเก่ง</h1>
+    <p>มีของเล็กๆ อยากให้ยู<br>ค่อยๆ เปิดดูนะครับ</p>
+    <button class="gift" id="giftBtn" aria-label="เปิดกล่องของขวัญ">
+      <span class="gift-lid"></span>
+      <span class="gift-box"></span>
+    </button>
+    <button class="btn" id="openBtn">เปิดของขวัญ ♡</button>
+    <p style="font-size:11px">made with love, just for you</p>
+  </div>
+</div>
+
+<nav>
+  <div class="nav-inner">
+    <a class="brand" href="#home">pao <span class="heart">♡</span> meen</a>
+    <button class="menu-btn" id="menuBtn" aria-label="เปิดเมนู">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="#home">หน้าแรก</a>
+      <a href="#story">เรื่องของเรา</a>
+      <a href="#memories">รูปความทรงจำ</a>
+      <a href="#letter">จดหมาย</a>
+      <a href="#little-things">เรื่องของยู</a>
+      <a href="#surprise">เซอร์ไพรส์</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <!-- หน้าแรก -->
+  <section class="hero" id="home">
+    <div class="wrap">
+      <div class="hero-flower">𓍢ִ໋🌷͙֒</div>
+      <p class="tiny">OUR LITTLE UNIVERSE</p>
+      <h1>pao <span>♡</span> meen</h1>
+      <p class="desc">
+        จากคนที่รู้จักกันในเกมวันนั้น<br>
+        กลายเป็นคนที่มีความหมายกับหัวใจในวันนี้
+      </p>
+      <a href="#story" class="btn">ย้อนดูเรื่องของเรา ↓</a>
+
+      <div class="counter-card">
+        <div class="eyebrow">TOGETHER SINCE</div>
+        <div class="counter-number" id="daysTogether">...</div>
+        <div class="counter-label">วันที่เราเลือกมีกันและกัน 🤍</div>
+        <div class="counter-grid">
+          <div><strong id="months">0</strong><small>เดือน</small></div>
+          <div><strong id="days">0</strong><small>วัน</small></div>
+          <div><strong id="hours">0</strong><small>ชั่วโมง</small></div>
+        </div>
+        <p class="subtitle" style="margin-bottom:0">11 มิถุนายน 2026 — วันเริ่มต้นของเรา</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- เรื่องราว -->
+  <section id="story">
+    <div class="wrap">
+      <div class="center">
+        <div class="eyebrow">CHAPTER ONE</div>
+        <h2>เรื่องของเรา</h2>
+        <p class="subtitle">บางเรื่องธรรมดาสำหรับคนอื่น<br>แต่สำหรับไอ มันเป็นความทรงจำที่พิเศษเสมอ</p>
+      </div>
+
+      <div class="timeline">
+        <div class="event">
+          <div class="event-card">
+            <div class="event-date">THE BEGINNING</div>
+            <h3>เราเจอกันใน RoV</h3>
+            <p>ทุกอย่างเริ่มจากเกมเกมหนึ่ง กับประโยคทักทายธรรมดาๆ ว่า “สวัสดียูเล่นฮงไกด้วยเหรออ” ตอนนั้นไอคงไม่คิดหรอกว่าวันหนึ่งยูจะกลายเป็นคนสำคัญขนาดนี้</p>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="event-card">
+            <div class="event-date">BEFORE WE BECAME US</div>
+            <h3>จากคนคุย สู่คนพิเศษ</h3>
+            <p>เราคุยกันอยู่ประมาณห้าเดือน ค่อยๆ รู้จักกันทีละนิด ก่อนที่ความสัมพันธ์ของเราจะกลายเป็นคำว่าแฟน</p>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="event-card">
+            <div class="event-date">OUR FIRST MEETING</div>
+            <h3>วันที่ได้เจอกันจริงๆ</h3>
+            <p>ก่อนจะคบกัน เราเจอกันมาแล้วสามครั้ง ไอยังจำความรู้สึกตอนเจอยูได้อยู่เลย ทั้งตื่นเต้น ทั้งประหม่า เพราะยูสวยมากจนไอทำตัวไม่ค่อยถูก</p>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="event-card">
+            <div class="event-date">A MEMORY I KEEP</div>
+            <h3>ดอกไม้ของยู</h3>
+            <p>วันที่เราเดินเล่นแถวพระนครแล้วทำดอกไม้ด้วยกัน ไอได้ให้ดอกไม้ยูด้วย ไอรู้สึกว่ายูเหมาะกับดอกไม้มากจริงๆ ถ้าเลือกได้ก็อยากให้ยูมีดอกไม้สวยๆ ไปเรื่อยๆ เลย</p>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="event-card">
+            <div class="event-date">11 JUNE 2026</div>
+            <h3>วันที่เราเป็นแฟนกัน ♡</h3>
+            <p>ขอบคุณที่ให้ไอได้เป็นส่วนหนึ่งในชีวิตยูนะครับ ต่อจากนี้ไม่รู้ว่าจะมีเรื่องอะไรเข้ามาอีก แต่ไอก็อยากค่อยๆ เรียนรู้และเติบโตไปกับยู</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- อัลบั้มรูป -->
+  <section id="memories">
+    <div class="wrap">
+      <div class="center">
+        <div class="eyebrow">LITTLE MOMENTS</div>
+        <h2>รูปที่อยากเก็บไว้</h2>
+        <p class="subtitle">บางรูปอาจเป็นแค่ภาพถ่าย<br>แต่คนในรูปคือคนที่ไออยากเก็บไว้ในชีวิต</p>
+      </div>
+
+      <div class="gallery" id="gallery">
+        <div class="photo" style="--tilt:-2deg">
+          <div class="placeholder">♡<br>ใส่รูปความทรงจำของเรา</div>
+          <p>our first memories</p>
+        </div>
+        <div class="photo" style="--tilt:2deg">
+          <div class="placeholder">🌷<br>รูปที่ไอชอบ</div>
+          <p>pretty little moments</p>
+        </div>
+        <div class="photo" style="--tilt:-1deg">
+          <div class="placeholder">🤍<br>วันที่ได้อยู่ด้วยกัน</div>
+          <p>with you</p>
+        </div>
+        <div class="photo" style="--tilt:2deg">
+          <div class="placeholder">𓍢ִ໋🌷͙֒<br>ดอกไม้ของยู</div>
+          <p>flowers for you</p>
+        </div>
+        <div class="photo" style="--tilt:-2deg">
+          <div class="placeholder">♡<br>รูปโปรดของยู</div>
+          <p>my favorite</p>
+        </div>
+        <div class="photo" style="--tilt:1deg">
+          <div class="placeholder">✉️<br>ยังมีอีกหลายรูปที่อยากถ่าย</div>
+          <p>to be continued...</p>
+        </div>
+      </div>
+
+      <div class="upload-area">
+        <strong>เพิ่มรูปเพื่อทดลองดูบนเครื่องนี้</strong>
+        <p>เลือกภาพจาก iPhone ได้หลายรูป รูปจะปรากฏในหน้านี้ทันที แต่จะยังไม่ถูกบันทึกให้คนที่เปิดลิงก์คนอื่นเห็นโดยอัตโนมัติ</p>
+        <input type="file" id="photoUpload" accept="image/*" multiple>
+      </div>
+    </div>
+  </section>
+
+  <!-- จดหมาย -->
+  <section id="letter">
+    <div class="wrap">
+      <div class="center">
+        <div class="eyebrow">A LETTER FOR YOU</div>
+        <h2>ถึงมีนของไอ</h2>
+        <p class="subtitle">มีบางอย่างที่ไออยากบอกยูไว้</p>
+      </div>
+
+      <div class="letter-wrap">
+        <div class="letter">
+          <h3>Dear Meen ♡</h3>
+          <p>ขอบคุณมากๆ นะครับยู ที่ยังใจดีและอยู่กับไอมาโดยตลอด
+
+ถึงยูจะชอบบอกตัวเองบ่อยๆ ว่าไม่ใจดี นิสัยแย่ หรือเป็นแบบนั้นแบบนี้ แต่ไอไม่เคยมองยูแบบนั้นเลยนะ ไอรู้ว่ายูเองก็มีวันที่เหนื่อย มีเรื่องที่ต้องคิด และมีหลายอย่างที่ต้องรับมือ
+
+ขอบคุณทุกช่วงเวลาที่เราได้อยู่ด้วยกันนะครับ ถึงเราจะมีปัญหาเข้ามาเรื่อยๆ บางครั้งก็เข้าใจกันผิด บางครั้งก็ทำให้อีกคนเสียใจ แต่ไอก็ยังเห็นคุณค่าของทุกอย่างที่เรามีร่วมกัน
+
+ไออาจไม่ได้ทำทุกอย่างได้ดีเสมอไป บางครั้งไอก็มีข้อเสีย มีวันที่อารมณ์ไม่ดี หรือไม่รู้ว่าจะสื่อสารกับยูยังไง ไออยากค่อยๆ ปรับตัวและทำให้ความรักของเราดีขึ้น ไม่ใช่แค่พูดว่ารัก แต่ทำให้ยูรู้สึกได้ด้วย
+
+ไออยากมีโอกาสไปเที่ยวกับยูอีกหลายๆ ที่ อยากทำอะไรด้วยกันอีกเยอะๆ อยากสร้างความทรงจำที่วันหนึ่งเรากลับมาดูแล้วมีความสุข
+
+ขอบคุณที่เข้ามาเป็นความทรงจำดีๆ ของไอนะครับ ไม่ว่าวันข้างหน้าจะมีอะไร ไอก็อยากให้เราค่อยๆ คุยกัน รับฟังกัน และดูแลความรู้สึกของกันและกันให้ดี
+
+รักนะครับยู
+
+สุขสันต์วันครบรอบของเรานะครับ 🤍</p>
+          <div class="signature">— จากไอ ถึงยู ♡</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- สิ่งที่ชอบ -->
+  <section id="little-things">
+    <div class="wrap">
+      <div class="center">
+        <div class="eyebrow">THINGS THAT REMIND ME OF YOU</div>
+        <h2>เรื่องเล็กๆ ของยู</h2>
+        <p class="subtitle">เพราะรายละเอียดเล็กๆ ของยู<br>ก็เป็นสิ่งที่ไออยากจำเหมือนกัน</p>
+      </div>
+
+      <div class="little-grid">
+        <div class="little-card"><span>🤍</span><p>สีขาว</p></div>
+        <div class="little-card"><span>🌷</span><p>ดอกไม้</p></div>
+        <div class="little-card"><span>🧸</span><p>ตุ๊กตานุ่มๆ</p></div>
+        <div class="little-card"><span>🍜</span><p>ขนมจีน</p></div>
+        <div class="little-card"><span>🍛</span><p>พะแนง</p></div>
+        <div class="little-card"><span>🌶️</span><p>หม่าล่า</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- อนาคตของเรา -->
+  <section id="future">
+    <div class="wrap">
+      <div class="center">
+        <div class="eyebrow">SOMEDAY WITH YOU</div>
+        <h2>อยากทำด้วยกันอีก</h2>
+        <p class="subtitle">ไม่ต้องรีบไปถึงทุกอย่างในวันนี้ก็ได้<br>ค่อยๆ สร้างความทรงจำไปด้วยกันนะ</p>
+      </div>
+      <div class="future-list">
+        <div class="future-item"><span>♡</span><div>ไปเที่ยวด้วยกันอีกหลายๆ ที่</div></div>
+        <div class="future-item"><span>♡</span><div>ถ่ายรูปเก็บความทรงจำของเราให้มากขึ้น</div></div>
+        <div class="future-item"><span>♡</span><div>ไปกินของอร่อยด้วยกัน</div></div>
+        <div class="future-item"><span>♡</span><div>ให้ดอกไม้ยูในวันที่พิเศษและวันที่ธรรมดา</div></div>
+        <div class="future-item"><span>♡</span><div>เรียนรู้ที่จะเข้าใจกันให้มากขึ้น</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- เพลง -->
+  <section id="music" style="background:#fff5f6">
+    <div class="wrap">
+      <div class="center">
+        <div class="eyebrow">OUR LITTLE SONG</div>
+        <h2>เพลงที่ทำให้นึกถึงเรา</h2>
+      </div>
+      <div class="music-card">
+        <div class="record">♫</div>
+        <h3>Why You Wanna Fight</h3>
+        <p>Bruno Mars · เพลงที่มีความหมายกับเรา</p>
+        <a class="btn" href="https://www.youtube.com/results?search_query=Bruno+Mars+Why+You+Wanna+Fight" target="_blank" rel="noopener">ฟังเพลงของเรา ↗</a>
+        <p>กดเพื่อเปิดเพลงใน YouTube<br>เว็บไซต์นี้จะไม่เปิดเพลงเองโดยไม่ได้รับอนุญาต</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ตอนจบ -->
+  <section id="surprise">
+    <div class="wrap center surprise-content">
+      <div class="eyebrow">ONE LAST THING</div>
+      <h2>มีอะไรจะให้ยูอีกอย่าง</h2>
+      <p class="subtitle">กดปุ่มนี้นะครับ</p>
+      <button class="btn" id="surpriseBtn">เปิดเซอร์ไพรส์ ♡</button>
+
+      <div class="hidden-message" id="hiddenMessage">
+        <div class="flower-field">💐 🌷 🤍 🌷 💐</div>
+        <h2>ดอกไม้สำหรับยู</h2>
+        <p>
+          ถ้าไอเลือกได้ ไออยากให้ยูได้รับดอกไม้สวยๆ เสมอเลย<br>
+          ไม่ใช่แค่เพราะยูชอบดอกไม้ แต่เพราะไอรู้สึกว่ายูเหมาะกับมันมากจริงๆ
+        </p>
+        <p>
+          ขอบคุณที่เข้ามาในชีวิตไอนะครับ<br>
+          ขอให้วันธรรมดาของยูมีเรื่องดีๆ มากขึ้น<br>
+          และขอให้เรามีความทรงจำดีๆ ด้วยกันอีกเยอะๆ เลย
+        </p>
+        <h2 style="color:#d594a7">รักยูนะ 🤍</h2>
+        <p class="subtitle">happy anniversary, my favorite person.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  made with love by pao · for meen ♡<br>
+  <span id="footerYear"></span>
+</footer>
+
+<script>
+const intro = document.getElementById('intro');
+const giftBtn = document.getElementById('giftBtn');
+const openBtn = document.getElementById('openBtn');
+
+function openGift() {
+  giftBtn.classList.add('open');
+  openBtn.textContent = 'กำลังเปิดของขวัญ...';
+  setTimeout(() => {
+    intro.classList.add('hide');
+    document.body.style.overflow = '';
+    makeHearts(8);
+  }, 650);
+}
+document.body.style.overflow = 'hidden';
+giftBtn.addEventListener('click', openGift);
+openBtn.addEventListener('click', openGift);
+
+// เมนูมือถือ
+const menuBtn = document.getElementById('menuBtn');
+const navLinks = document.getElementById('navLinks');
+menuBtn.addEventListener('click', () => navLinks.classList.toggle('show'));
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => navLinks.classList.remove('show'));
+});
+
+// นับเวลาจากวันครบรอบ 11 มิถุนายน 2026 ตามเวลาไทย
+function updateCounter() {
+  const start = new Date('2026-06-11T00:00:00+07:00');
+  const now = new Date();
+  const elapsed = Math.max(0, now.getTime() - start.getTime());
+  const totalHours = Math.floor(elapsed / 3600000);
+  const totalDays = Math.floor(elapsed / 86400000);
+
+  let months = (now.getFullYear() - start.getFullYear()) * 12
+             + (now.getMonth() - start.getMonth());
+  if (now.getDate() < start.getDate()) months--;
+
+  const monthAnchor = new Date(start);
+  monthAnchor.setMonth(monthAnchor.getMonth() + Math.max(0, months));
+  const remainderDays = Math.max(0, Math.floor(
+    (now.getTime() - monthAnchor.getTime()) / 86400000
+  ));
+
+  document.getElementById('daysTogether').textContent = totalDays;
+  document.getElementById('months').textContent = Math.max(0, months);
+  document.getElementById('days').textContent = remainderDays;
+  document.getElementById('hours').textContent = totalHours % 24;
+}
+updateCounter();
+setInterval(updateCounter, 60000);
+document.getElementById('footerYear').textContent = '2026 · always a little more love';
+
+// เซอร์ไพรส์
+document.getElementById('surpriseBtn').addEventListener('click', function() {
+  const message = document.getElementById('hiddenMessage');
+  message.classList.toggle('show');
+  this.textContent = message.classList.contains('show')
+    ? 'กอดผ่านหน้าจอหนึ่งที ♡'
+    : 'เปิดเซอร์ไพรส์ ♡';
+  if (message.classList.contains('show')) makeHearts(18);
+});
+
+// หัวใจลอย
+function makeHearts(amount) {
+  for (let i = 0; i < amount; i++) {
+    setTimeout(() => {
+      const heart = document.createElement('div');
+      heart.className = 'floating-heart';
+      heart.textContent = ['♡', '🤍', '🌷', '♥'][Math.floor(Math.random() * 4)];
+      heart.style.left = Math.random() * 95 + 'vw';
+      heart.style.fontSize = (14 + Math.random() * 18) + 'px';
+      heart.style.animationDuration = (4 + Math.random() * 3) + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 7500);
+    }, i * 100);
+  }
+}
+
+// อัปโหลดรูปเพื่อแสดงตัวอย่างในเบราว์เซอร์ปัจจุบัน
+const photoUpload = document.getElementById('photoUpload');
+const gallery = document.getElementById('gallery');
+const captions = [
+  'our little moment', 'with you ♡', 'my favorite person',
+  'a day to remember', 'flowers for you', 'always us'
+];
+
+photoUpload.addEventListener('change', function(event) {
+  const files = Array.from(event.target.files || []);
+  files.forEach((file, index) => {
+    if (!file.type.startsWith('image/')) return;
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      const card = document.createElement('div');
+      card.className = 'photo';
+      card.style.setProperty('--tilt', (Math.random() * 4 - 2) + 'deg');
+
+      const img = document.createElement('img');
+      img.src = e.target.result;
+      img.alt = 'รูปความทรงจำของเรา';
+
+      const caption = document.createElement('p');
+      caption.textContent = captions[index % captions.length];
+
+      card.appendChild(img);
+      card.appendChild(caption);
+      gallery.appendChild(card);
+    };
+    reader.readAsDataURL(file);
+  });
+});
+</script>
+</body>
+</html>
